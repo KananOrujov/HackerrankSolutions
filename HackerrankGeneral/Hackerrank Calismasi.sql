@@ -12,6 +12,7 @@ Where
     COUNTRYCODE='USA' 
     AND 
     POPULATION>100000;
+GO
 
 /*
 2)Query the NAME field for all American cities 
@@ -23,17 +24,24 @@ Select
 From
     City
 Where
-    COUNTRYCODE='USA' AND POPULATION>120000;
+    COUNTRYCODE='USA' 
+    AND
+    POPULATION>120000;
+GO
 
 /*
 3)Query all columns (attributes) for every row in the CITY table.
 */
+
 Select
     *
 From
-    CITY
+    CITY;
+GO
 
+/*
 4)Query all columns for a city in CITY with the ID 1661.
+*/
 
 Select
     *
@@ -41,9 +49,11 @@ From
     CITY
 Where
     ID=1661;
+GO
 
-
+/*
 5)Query all attributes of every Japanese city in the CITY table. The COUNTRYCODE for Japan is JPN.
+*/
 
 Select
     *
@@ -51,9 +61,11 @@ From
     CITY
 Where
     COUNTRYCODE='JPN';
+GO
 
-
+/*
 6)Query the names of all the Japanese cities in the CITY table. The COUNTRYCODE for Japan is JPN.
+*/
 
 Select
     Name
@@ -61,29 +73,44 @@ From
     CITY
 Where
     COUNTRYCODE='JPN';
+GO
 
+/*
 7)Query a list of CITY and STATE from the STATION table.
-
+*/
 SELECT 
     CITY, STATE 
 FROM 
     STATION;
+GO
 
- 8)Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer.
+/*
+8)Query a list of CITY names from STATION for cities that have an even ID number. 
+Print the results in any order, but exclude duplicates from the answer.
+*/
 
  SELECT DISTINCT 
     CITY 
 FROM 
     STATION 
 WHERE 
-    MOD(ID, 2) = 0;
-9)Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+MOD(ID, 2) = 0;
+GO
 
+/*
+9)Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+*/
 Select
-    Count(CITY)-    Count( distinct CITY)
+    Count(CITY) - Count(distinct CITY)
 From
-    STATION ;
-10)Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
+    STATION ; 
+GO   
+ 
+ /*
+10)Query the two cities in STATION with the shortest and longest CITY names, 
+as well as their respective lengths (i.e.: number of characters in the name). 
+If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
+*/
 
 select 
     city c, 
@@ -101,7 +128,9 @@ order by l asc, c asc
 limit 1;
 GO
 
+/*
 11)Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+*/
 
 SELECT DISTINCT 
     city 
@@ -115,33 +144,23 @@ WHERE
     city LIKE "U%";
 GO
 
-11)Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+/*
+12)Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+*/
 
 SELECT DISTINCT 
-    city 
+   city 
 FROM 
     station 
 WHERE 
-city LIKE "%A" OR 
+    city LIKE "%A" OR 
     city LIKE "%E" OR 
     city LIKE "%I" OR 
     city LIKE "%O" OR 
     city LIKE "%U";
+GO
 
-12)select distinct city from station
-where (city like 'a%' or 
-       city like 'e%' or 
-       city like 'i%' or 
-       city like 'o%' or 
-       city like 'u%')
-and
-(
-city like '%a' or 
-    city like '%e' or 
-    city like '%i' or 
-    city like '%o' or 
-    city like '%u'
-)
+/*
 13)Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.
 
 SELECT DISTINCT 
