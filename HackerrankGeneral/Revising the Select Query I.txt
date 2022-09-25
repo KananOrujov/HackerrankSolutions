@@ -1,9 +1,0 @@
-Select
-    *
-From
-    City
-Where
-    COUNTRYCODE='USA' 
-    AND 
-    POPULATION>100000;
-GO
